@@ -25,42 +25,42 @@ public class BancaMenedor {
 
 		switch (mese) {
 
-			case 1:
-				Mese = "Gennaio";
-				break;
-			case 2:
-				Mese = "Febbario";
-				break;
-			case 3:
-				Mese = "Marzo";
-				break;
-			case 4:
-				Mese = "Aprile";
-				break;
-			case 5:
-				Mese = "Maggio";
-				break;
-			case 6:
-				Mese = "Giugno";
-				break;
-			case 7:
-				Mese = "Luglio";
-				break;
-			case 8:
-				Mese = "Agosto";
-				break;
-			case 9:
-				Mese = "Settembre";
-				break;
-			case 10:
-				Mese = "Ottobre";
-				break;
-			case 11:
-				Mese = "Novembre";
-				break;
-			case 12:
-				Mese = "Dicembre";
-				break;
+		case 1:
+			Mese = "Gennaio";
+			break;
+		case 2:
+			Mese = "Febbario";
+			break;
+		case 3:
+			Mese = "Marzo";
+			break;
+		case 4:
+			Mese = "Aprile";
+			break;
+		case 5:
+			Mese = "Maggio";
+			break;
+		case 6:
+			Mese = "Giugno";
+			break;
+		case 7:
+			Mese = "Luglio";
+			break;
+		case 8:
+			Mese = "Agosto";
+			break;
+		case 9:
+			Mese = "Settembre";
+			break;
+		case 10:
+			Mese = "Ottobre";
+			break;
+		case 11:
+			Mese = "Novembre";
+			break;
+		case 12:
+			Mese = "Dicembre";
+			break;
 		default:
 			break;
 
@@ -96,46 +96,43 @@ public class BancaMenedor {
 		s.trim();
 		try {
 			i = (int) Integer.parseInt(s);
-		} 
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return i;
-		} 
+		}
 
 		return i;
 
 	}// convertitore
-	
-	
-	public static double cifreDopoVirgola (double n){
-		
+
+	public static double cifreDopoVirgola(double n) {
+
 		String s = "";
 		s += n;
 		String s1 = "";
-		int posPunto =0;
-		boolean trovato=false;
-		
-		for ( int i=0;i<s.length() && !trovato;i++) {
-			if (s.charAt(i)=='.') {
-				posPunto=i;
-				trovato =true;
+		int posPunto = 0;
+		boolean trovato = false;
+
+		for (int i = 0; i < s.length() && !trovato; i++) {
+			if (s.charAt(i) == '.') {
+				posPunto = i;
+				trovato = true;
 			}
 		}
-		
-		for ( int i=0;i<posPunto;i++) {
-			s1 += s.charAt(i);
-		}
-		
-		
-		int maxPuntoCifre = 3;
-		
-		for ( int i=posPunto;i<s.length() && maxPuntoCifre!=0;i++) {
-			s1 += s.charAt(i);
-			maxPuntoCifre --;
-		}
-		
-		return convertitoreDouble(s1); 
 
-	} //cifreDopoVirgola
+		for (int i = 0; i < posPunto; i++) {
+			s1 += s.charAt(i);
+		}
+
+		int maxPuntoCifre = 3;
+
+		for (int i = posPunto; i < s.length() && maxPuntoCifre != 0; i++) {
+			s1 += s.charAt(i);
+			maxPuntoCifre--;
+		}
+
+		return convertitoreDouble(s1);
+
+	} // cifreDopoVirgola
 
 	public static double convertitoreDouble(String s) {
 
@@ -143,11 +140,10 @@ public class BancaMenedor {
 		s.trim();
 		try {
 			i = (double) Double.parseDouble(s);
-		} 
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return i;
-		} 
-		
+		}
+
 		return i;
 
 	}// convertitoreDouble
@@ -179,7 +175,7 @@ public class BancaMenedor {
 	}// preleva
 
 	public static double ricavo(int percentuale, int rischio, double investimento, double guadagno) {
-		
+
 		double ricavo = (double) percentuale / 100;
 		double totale;
 
@@ -188,12 +184,11 @@ public class BancaMenedor {
 		}
 
 		else {
-			
-			if (rischio>=81 && rischio <=84) {
+
+			if (rischio >= 81 && rischio <= 84) {
 				totale = investimento - (investimento * ricavo * guadagno);
-			}
-			else{
-				totale = investimento - (investimento * ricavo); 
+			} else {
+				totale = investimento - (investimento * ricavo);
 			}
 		}
 		return totale;
@@ -210,9 +205,6 @@ public class BancaMenedor {
 		return -1;
 	}// stampaInvestimenti
 
-	
-	
-	
 	public static void main(String[] args) {
 
 		Scanner tastiera = new Scanner(System.in);
@@ -244,7 +236,7 @@ public class BancaMenedor {
 				mese = 0;
 				anno++;
 			}
-			
+
 			menu();
 
 			do {
@@ -262,296 +254,330 @@ public class BancaMenedor {
 				System.out.println("");
 
 			} while (!ok);
-			
+
 			switch (scelta) {
 
-				case 1: {
+			case 1: {
 
-					String deposita = "";
-					double tempDeposita = 0;
+				String deposita = "";
+				double tempDeposita = 0;
 
-					System.out.print("Quanti soldi vuoi depositare? ( in un singolo deposito il tetto massimo è di 3000$)");
-					deposita = tastiera.nextLine();
+				System.out.print("Quanti soldi vuoi depositare? ( in un singolo deposito il tetto massimo è di 3000$)");
+				deposita = tastiera.nextLine();
 
-					if (convertitoreDouble(deposita) > 0) {
+				if (convertitoreDouble(deposita) > 0) {
 
-						tempDeposita = convertitoreDouble(deposita);
-						
-						tempDeposita = cifreDopoVirgola(tempDeposita);
-						
-						if (tempDeposita > 0 && tempDeposita <= 3000) {
+					tempDeposita = convertitoreDouble(deposita);
 
-							if (deposita(contoPortafoglio, contoBancario, tempDeposita)) {
+					tempDeposita = cifreDopoVirgola(tempDeposita);
 
-								contoPortafoglio -= tempDeposita;
-								contoBancario += tempDeposita;
+					if (tempDeposita > 0 && tempDeposita <= 3000) {
 
-								System.out.print("I soldi sono stati depositati.");
+						if (deposita(contoPortafoglio, contoBancario, tempDeposita)) {
 
-							} else {System.out.print("I soldi non sono stati depositati.");}
-						
-						} else {System.out.print("Hai inserito una cifra sbagliata di soldi da depositare.");}
+							contoPortafoglio -= tempDeposita;
+							contoBancario += tempDeposita;
 
-					} else {System.out.print("Hai inserito una cifra sbagliata di soldi da depositare.");}
+							System.out.print("I soldi sono stati depositati.");
 
-					System.out.println("\n");
-					break;
-				} // case 1
+						} else {
+							System.out.print("I soldi non sono stati depositati.");
+						}
 
-				case 2: {
-					
-					String preleva = "";
-					double tempPreleva = 0;
-					
-					if (contoBancario > 0) {
-					
-						System.out.print("Quanti soldi vuoi prelevare? ( in un singolo prelievo il tetto massimo è di 3000$)");
-						preleva = tastiera.nextLine();
-					
-						if (convertitoreDouble(preleva) > 0 ) {
-
-							
-							tempPreleva = convertitoreDouble(preleva);
-							
-							tempPreleva = cifreDopoVirgola(tempPreleva);
-							
-							if (tempPreleva > 0 && tempPreleva <=3000) {
-
-								if (preleva(contoPortafoglio, contoBancario, tempPreleva)) {
-
-									contoPortafoglio += tempPreleva;
-									contoBancario -= tempPreleva;
-
-									System.out.print("I soldi sono stati prelevati.");
-
-								} else {System.out.print("I soldi non sono stati prelevati.");}
-								
-							} else {System.out.print("Hai inserito una cifra sbagliata di soldi da prelevare.");}
-							
-						} else {System.out.print("Hai inserito una cifra sbagliata di soldi da prelevare.");}
-						
-					}else {System.out.println("Il tuo conto e' negativo, non è possibile prelevare soldi!");}
-	
-					System.out.println("\n");
-					break;
-				} // case 2
-
-				case 3: {
-
-					boolean errore = false;
-
-					if (numeroInvestimenti == 19) {
-						errore = true;
+					} else {
+						System.out.print("Hai inserito una cifra sbagliata di soldi da depositare.");
 					}
-					
-					if (contoBancario <= 0) {
-						errore = true;
+
+				} else {
+					System.out.print("Hai inserito una cifra sbagliata di soldi da depositare.");
+				}
+
+				System.out.println("\n");
+				break;
+			} // case 1
+
+			case 2: {
+
+				String preleva = "";
+				double tempPreleva = 0;
+
+				if (contoBancario > 0) {
+
+					System.out.print(
+							"Quanti soldi vuoi prelevare? ( in un singolo prelievo il tetto massimo è di 3000$)");
+					preleva = tastiera.nextLine();
+
+					if (convertitoreDouble(preleva) > 0) {
+
+						tempPreleva = convertitoreDouble(preleva);
+
+						tempPreleva = cifreDopoVirgola(tempPreleva);
+
+						if (tempPreleva > 0 && tempPreleva <= 3000) {
+
+							if (preleva(contoPortafoglio, contoBancario, tempPreleva)) {
+
+								contoPortafoglio += tempPreleva;
+								contoBancario -= tempPreleva;
+
+								System.out.print("I soldi sono stati prelevati.");
+
+							} else {
+								System.out.print("I soldi non sono stati prelevati.");
+							}
+
+						} else {
+							System.out.print("Hai inserito una cifra sbagliata di soldi da prelevare.");
+						}
+
+					} else {
+						System.out.print("Hai inserito una cifra sbagliata di soldi da prelevare.");
 					}
+
+				} else {
+					System.out.println("Il tuo conto e' negativo, non è possibile prelevare soldi!");
+				}
+
+				System.out.println("\n");
+				break;
+			} // case 2
+
+			case 3: {
+
+				boolean errore = false;
+
+				if (numeroInvestimenti == 19) {
+					errore = true;
+				}
+
+				if (contoBancario <= 0) {
+					errore = true;
+				}
+
+				if (!errore) {
+					int rischio = 0;
+
+					// InvestimentoDurata
+					int sceltaInvestimentoDurata = 0;
+					String tempInvestimentoDurata;
+					int durataMesi = 0;
+
+					menuInvestimentiDurata();
+					tempInvestimentoDurata = tastiera.nextLine();
+					sceltaInvestimentoDurata = convertitore(tempInvestimentoDurata);
+					System.out.println();
+
+					switch (sceltaInvestimentoDurata) {
+
+					case 1: {
+						rischio -= 1;
+						durataMesi = 2;
+						System.out.println("\n");
+						break;
+					} // case 1-corto
+
+					case 2: {
+						rischio -= 2;
+						durataMesi = 5;
+						System.out.println("\n");
+						break;
+					} // case 2-medio
+
+					case 3: {
+						rischio -= 4;
+						durataMesi = 9;
+						System.out.println("\n");
+						break;
+					} // case 3-lungo
+
+					default: {
+						errore = true;
+						break;
+					} // default
+
+					}// switchDurata
 
 					if (!errore) {
-						int rischio = 0;
 
-						// InvestimentoDurata
-						int sceltaInvestimentoDurata = 0;
-						String tempInvestimentoDurata;
-						int durataMesi = 0;
+						// InvestimentoRischio
+						String tempInvestimentoRischio;
+						int sceltaInvestimentoRischio = 0;
 
-						menuInvestimentiDurata();
-						tempInvestimentoDurata = tastiera.nextLine();
-						sceltaInvestimentoDurata = convertitore(tempInvestimentoDurata);
+						menuInvestimentiRischio();
+
+						tempInvestimentoRischio = tastiera.nextLine();
+						sceltaInvestimentoRischio = convertitore(tempInvestimentoRischio);
 						System.out.println();
+						int percentuale = (int) (Math.random() * 100) + 1;
+						double minimo = 99.99;
+						double guadagno = 1;
 
-						switch (sceltaInvestimentoDurata) {
+						switch (sceltaInvestimentoRischio) {
 
-							case 1: {
-								rischio -= 1;
-								durataMesi = 2;
-								System.out.println("\n");
-								break;
-							} // case 1-corto
+						case 1: {
 
-							case 2: {
-								rischio -= 2;
-								durataMesi = 5;
-								System.out.println("\n");
-								break;
-							} // case 2-medio
+							rischio += 85;
+							guadagno = 2.6;
+							System.out.println("\n");
+							break;
+						} // case 1-alta
 
-							case 3: {
-								rischio -= 4;
-								durataMesi = 9;
-								System.out.println("\n");
-								break;
-							} // case 3-lungo
+						case 2: {
 
-							default: {
-								errore = true;
-								break;
-							} // default
+							rischio += 46;
+							guadagno = 1.7;
+							System.out.println("\n");
+							break;
+						} // case 2-media
 
-						}// switchDurata
+						case 3: {
+
+							rischio += 17;
+							guadagno = 1.2;
+							System.out.println("\n");
+							break;
+						} // case 3-bassa
+
+						default: {
+							errore = true;
+							break;
+						} // default
+
+						}// switchRischio
 
 						if (!errore) {
 
-							// InvestimentoRischio
-							String tempInvestimentoRischio;
-							int sceltaInvestimentoRischio = 0;
+							System.out.print("Inserisci quanti soldi vuoi investire:");
+							String tempInvestimento = tastiera.next();
+							double investimento = 0;
 
-							menuInvestimentiRischio();
+							if (convertitoreDouble(tempInvestimento) > 0
+									&& convertitoreDouble(tempInvestimento) <= 3000) {
+								investimento = convertitoreDouble(tempInvestimento);
+							} else {
+								errore = true;
+							}
 
-							tempInvestimentoRischio = tastiera.nextLine();
-							sceltaInvestimentoRischio = convertitore(tempInvestimentoRischio);
-							System.out.println();
-							int percentuale = (int) (Math.random() * 100) + 1;
-							double minimo = 99.99;
-							double guadagno = 1;
+							if (investimento <= minimo) {
+								errore = true;
+							}
 
-							switch (sceltaInvestimentoRischio) {
-
-								case 1: {
-									
-									rischio += 85;
-									guadagno = 2.6;
-									System.out.println("\n");
-									break;
-								} // case 1-alta
-
-								case 2: {
-									
-									rischio += 46;
-									guadagno = 1.7;
-									System.out.println("\n");
-									break;
-								} // case 2-media
-
-								case 3: {
-									
-									rischio += 17;
-									guadagno = 1.2;
-									System.out.println("\n");
-									break;
-								} // case 3-bassa
-
-								default: {
-									errore = true;
-									break;
-								} // default
-
-							}// switchRischio
+							if (investimento > contoBancario) {
+								errore = true;
+							}
 
 							if (!errore) {
 
-								System.out.print("Inserisci quanti soldi vuoi investire:");
-								String tempInvestimento = tastiera.next();
-								double investimento=0; 
-								
-								if ( convertitoreDouble(tempInvestimento)>0 && convertitoreDouble(tempInvestimento)<=3000) {
-									investimento = convertitoreDouble(tempInvestimento);
-								}else {errore = true;}
-								
-								if (investimento <= minimo) {errore = true;}
-								
-								if (investimento > contoBancario) {errore = true;}
+								contoBancario -= investimento;
+								boolean fatto = false;
 
-								
-								
-								if (!errore) {
-
-									contoBancario -= investimento;
-									boolean fatto = false;
-
-									for (int i = 0; i < 20 && !fatto; i++) {
-										if (durataInvestimenti[i] <= -1) {
-											durataInvestimenti[i] = durataMesi;
-											Investimenti[i] = cifreDopoVirgola( ricavo(percentuale, rischio, investimento, guadagno) );
-											fatto = true;
-											System.out.println("L'investimento e' riuscito.");
-										}
+								for (int i = 0; i < 20 && !fatto; i++) {
+									if (durataInvestimenti[i] <= -1) {
+										durataInvestimenti[i] = durataMesi;
+										Investimenti[i] = cifreDopoVirgola(
+												ricavo(percentuale, rischio, investimento, guadagno));
+										fatto = true;
+										System.out.println("L'investimento e' riuscito.");
 									}
-									
-									System.out.println("\n");
-									numeroInvestimenti++;
+								}
 
-								} else {System.out.println("E' stato comesso un errore nell'iserimento dei soldi da investire.");}
-								
-							} else {System.out.println("E' stato comesso un errore nell'iserimento del rischio.");}
-							
-						} else {System.out.println("E' stato comesso un errore nell'iserimento della durata.");}
-						
-					} else {System.out.println("Hai raggiunto il numero massimo di investimenti possibili o non hai abbstanza soldi.");}
+								System.out.println("\n");
+								numeroInvestimenti++;
 
-					break;
-				} // case 3
+							} else {
+								System.out
+										.println("E' stato comesso un errore nell'iserimento dei soldi da investire.");
+							}
 
-				case 4: {
-					
-					contoBancario = cifreDopoVirgola(contoBancario);
-					System.out.println("Il tuo conto bancario e': " + contoBancario+"$.");
-					
-					System.out.println("\n");
-					break;
-				} // case 4
-
-				case 5: {
-					
-					contoPortafoglio = cifreDopoVirgola(contoPortafoglio);
-					System.out.println("Nel tuo portafoglio hai: " + contoPortafoglio+"$.");
-
-					System.out.println("\n");
-					break;
-				} // case 5
-
-				case 6: {
-
-					contoPortafoglio += 100;
-					mese++;
-					
-					for (int i = 0; i < 20; i++) {
-						durataInvestimenti[i]--;
-					}
-					
-					int investimentiEliminati=0;
-					
-					for (int i = 0; i<numeroInvestimenti; i++) {
-						
-						if (trovaInvestimenti(durataInvestimenti) != -1) {
-							
-							int n = trovaInvestimenti(durataInvestimenti);
-							
-							if(Investimenti[n]>=0) {System.out.println("Hai ricevuto : " + Investimenti[n] + "$ da un vecchio investimento.");}
-							else {System.out.println("Hai perso : " + Investimenti[n] + "$ dal tuo conto, a causa di un vecchio investimento.");}
-							System.out.println("\n");
-							
-							contoBancario += Investimenti[n];
-							Investimenti[n] = -1;
-							durataInvestimenti[n] = -1;
-							investimentiEliminati++;
-							
+						} else {
+							System.out.println("E' stato comesso un errore nell'iserimento del rischio.");
 						}
-					}
-					
-					numeroInvestimenti -= investimentiEliminati;
-					System.out.println();
-					break;
-				} // case 6
 
-				default: {
-
-					if (scelta != 0) {
-						System.out.println("ERRORE!");
+					} else {
+						System.out.println("E' stato comesso un errore nell'iserimento della durata.");
 					}
 
-					break;
+				} else {
+					System.out.println(
+							"Hai raggiunto il numero massimo di investimenti possibili o non hai abbstanza soldi.");
+				}
 
-				} // default
+				break;
+			} // case 3
+
+			case 4: {
+
+				contoBancario = cifreDopoVirgola(contoBancario);
+				System.out.println("Il tuo conto bancario e': " + contoBancario + "$.");
+
+				System.out.println("\n");
+				break;
+			} // case 4
+
+			case 5: {
+
+				contoPortafoglio = cifreDopoVirgola(contoPortafoglio);
+				System.out.println("Nel tuo portafoglio hai: " + contoPortafoglio + "$.");
+
+				System.out.println("\n");
+				break;
+			} // case 5
+
+			case 6: {
+
+				contoPortafoglio += 100;
+				mese++;
+
+				for (int i = 0; i < 20; i++) {
+					durataInvestimenti[i]--;
+				}
+
+				int investimentiEliminati = 0;
+
+				for (int i = 0; i < numeroInvestimenti; i++) {
+
+					if (trovaInvestimenti(durataInvestimenti) != -1) {
+
+						int n = trovaInvestimenti(durataInvestimenti);
+
+						if (Investimenti[n] >= 0) {
+							System.out.println("Hai ricevuto : " + Investimenti[n] + "$ da un vecchio investimento.");
+						} else {
+							System.out.println("Hai perso : " + Investimenti[n]
+									+ "$ dal tuo conto, a causa di un vecchio investimento.");
+						}
+						System.out.println("\n");
+
+						contoBancario += Investimenti[n];
+						Investimenti[n] = -1;
+						durataInvestimenti[n] = -1;
+						investimentiEliminati++;
+
+					}
+				}
+
+				numeroInvestimenti -= investimentiEliminati;
+				System.out.println();
+				break;
+			} // case 6
+
+			default: {
+
+				if (scelta != 0) {
+					System.out.println("ERRORE!");
+				}
+
+				break;
+
+			} // default
 
 			}// switch
-			
+
 			System.out.println("\n");
-			
+
 		} while (scelta != 0);
-		
-	tastiera.close();
+
+		tastiera.close();
 	}// main
 
 }// progettoBanca
